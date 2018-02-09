@@ -45,7 +45,7 @@ int InitRawSocket(char *device, int promiscFlag, int ipOnly){
 		sa.sll_protocol = htons(ETH_P_ALL);
 	}
 	sa.sll_ifindex = ifreq.ifr_ifindex;
-	if(bind(soc, (struct sockaddr *)$sa, sizeof(sa)) < 0){
+	if(bind(soc, (struct sockaddr *)&sa, sizeof(sa)) < 0){
 		perror("bind");
 		close(soc);
 		return -1;
